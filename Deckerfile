@@ -1,0 +1,10 @@
+FROM jenkins/jenkins:latest
+USER root
+RUN apt-get update && apt-get -y install \
+     curl \
+     apt-transport-https \
+     ca-certificates \
+     gnupg2 \
+     software-properties-common
+ADD ["https://storage.googleapis.com/kubernetes-release/release/v1.22.0/bin/linux/amd64/kubectl", "/usr/local/bin/"]
+RUN chmod +x /usr/local/bin/kubectl
